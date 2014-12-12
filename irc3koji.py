@@ -55,7 +55,6 @@ class Koji(object):
         self.bot = bot
 
         koji_url = bot.config['koji']['url']
-        print koji_url
         self.koji_client = koji.ClientSession(koji_url, {})
 
     @command
@@ -101,9 +100,6 @@ class Koji(object):
 
             %%taskload
         """
-        msg = 'test'
-        self.bot.privmsg(target, '%s: %s' % (mask.nick, msg))
-        print 'Houba'
         k = self.koji_client
         open = k.listTasks(opts={'state': [1]})
         total = k.listTasks(opts={'state': [0, 1, 4]})
